@@ -30,15 +30,15 @@ while True:
     elif messeges[0] == "put":
         FunctionsHDFS.put(messeges[1], server, port, user)
     elif messeges[0] == "get":
-        FunctionsHDFS.get(messeges[1])
+        FunctionsHDFS.get(messeges[1], server, port, user)
     elif messeges[0] == "append":
         FunctionsHDFS.append(messeges[1])
     elif messeges[0] == "delete":
         FunctionsHDFS.delete(messeges[1])
     elif messeges[0] == "ls":
-        FunctionsHDFS.ls(messeges[1])
+        FunctionsHDFS.ls(server, port, user)
     elif messeges[0] == "cd":
-        FunctionsHDFS.cd(messeges[1])
+        FunctionsHDFS.cd(messeges[1], server, port, user)
     elif messeges[0] == "lls":
         FunctionsHDFS.lls()
     elif messeges[0] == "lcd":
