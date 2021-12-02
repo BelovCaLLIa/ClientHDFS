@@ -1,42 +1,41 @@
 # -*- coding: utf-8 -*-
+import sys
 import FunctionsHDFS
 import subprocess
-# import keyboard
 from sys import argv
+# import ftplib
 
 script, server, port, user = argv 
+# server, port, user = "localhost", "50070", "oioopcaxix"
 
 # print("Приветственное сообщение")
 
 # command = subprocess.run(["whoami"], stdout=subprocess.PIPE, text=True)
 # user = command.stdout
 
-print("Имя пользователя HDFS: "+ user)
-
-# history = dict()
-# i = 0
+# FunctionsHDFS.pathChange(user, 1)
+# Задаём начальный путь
+FunctionsHDFS.setPath("user")
+FunctionsHDFS.setPath(f"{user}")
 
 while True:
-    messeges = input("[" + user + "]$ ").split()
-    
-    # i += 1
-    # history.update({i:" ".join(messeges)})
-    # print(history)
+    messeges = input("[" + user + "]$ ").split()        
 
     # keyboard.add_hotkey("Вверх", print("Вверх"))
-
-    if messeges[0] == "mkdir":
-        FunctionsHDFS.mkdir(messeges[1])
+    if len(messeges) == 0:
+        continue
+    elif messeges[0] == "mkdir":
+        FunctionsHDFS.mkdir(messeges[1], server, port, user)
     elif messeges[0] == "put":
         FunctionsHDFS.put(messeges[1], server, port, user)
     elif messeges[0] == "get":
         FunctionsHDFS.get(messeges[1], server, port, user)
     elif messeges[0] == "append":
-        FunctionsHDFS.append(messeges[1])
+        FunctionsHDFS.append(messeges[1], server, port, user)
     elif messeges[0] == "delete":
-        FunctionsHDFS.delete(messeges[1])
+        FunctionsHDFS.delete(messeges[1], server, port, user)
     elif messeges[0] == "ls":
-        FunctionsHDFS.ls(server, port, user)
+        FunctionsHDFS.ls(server, port, user, "print")
     elif messeges[0] == "cd":
         FunctionsHDFS.cd(messeges[1], server, port, user)
     elif messeges[0] == "lls":
@@ -45,5 +44,7 @@ while True:
         FunctionsHDFS.lcd(messeges[1])
     elif messeges[0] == "help":
         FunctionsHDFS.help()
+    elif messeges[0] == "exit" or messeges[0] == "e":
+        sys.exit()
     else:
         print("Неизвестная команда")
