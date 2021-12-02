@@ -8,7 +8,7 @@ from sys import argv
 script, server, port, user = argv 
 # server, port, user = "localhost", "50070", "oioopcaxix"
 
-# print("Приветственное сообщение")
+print("Добро пожаловать в специальный терминал, для удобного общение с системой HDFS!")
 
 # command = subprocess.run(["whoami"], stdout=subprocess.PIPE, text=True)
 # user = command.stdout
